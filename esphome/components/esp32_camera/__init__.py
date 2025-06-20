@@ -141,6 +141,7 @@ CONF_MAX_FRAMERATE = "max_framerate"
 CONF_IDLE_FRAMERATE = "idle_framerate"
 # frame buffer
 CONF_FRAME_BUFFER_COUNT = "frame_buffer_count"
+CONF_FRAME_BUFFER_DRAM = "frame_buffer_dram"
 
 # stream trigger
 CONF_ON_STREAM_START = "on_stream_start"
@@ -215,6 +216,7 @@ CONFIG_SCHEMA = cv.ENTITY_BASE_SCHEMA.extend(
             cv.framerate, cv.Range(min=0, max=1)
         ),
         cv.Optional(CONF_FRAME_BUFFER_COUNT, default=1): cv.int_range(min=1, max=2),
+        cv.Optional(CONF_FRAME_BUFFER_DRAM, default=False): cv.boolean,
         cv.Optional(CONF_ON_STREAM_START): automation.validate_automation(
             {
                 cv.GenerateID(CONF_TRIGGER_ID): cv.declare_id(
@@ -266,6 +268,7 @@ SETTERS = {
     CONF_WB_MODE: "set_wb_mode",
     # test pattern
     CONF_TEST_PATTERN: "set_test_pattern",
+    CONF_FRAME_BUFFER_DRAM: "set_frame_buffer_dram",
 }
 
 

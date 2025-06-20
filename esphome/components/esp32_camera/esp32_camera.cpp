@@ -341,6 +341,13 @@ void ESP32Camera::set_frame_buffer_count(uint8_t fb_count) {
   this->config_.fb_count = fb_count;
   this->set_frame_buffer_mode(fb_count > 1 ? CAMERA_GRAB_LATEST : CAMERA_GRAB_WHEN_EMPTY);
 }
+void ESP32Camera::set_frame_buffer_dram(bool frame_buffer_dram) {
+  if (frame_buffer_dram) {
+	this->config_.fb_location = CAMERA_FB_IN_DRAM;
+  } else {
+	this->config_.fb_location = CAMERA_FB_IN_PSRAM;
+  }
+}	
 
 /* ---------------- public API (specific) ---------------- */
 void ESP32Camera::add_image_callback(std::function<void(std::shared_ptr<CameraImage>)> &&callback) {

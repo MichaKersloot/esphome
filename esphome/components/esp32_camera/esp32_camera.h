@@ -148,6 +148,7 @@ class ESP32Camera : public EntityBase, public Component {
   /* -- frame buffer */
   void set_frame_buffer_mode(camera_grab_mode_t mode);
   void set_frame_buffer_count(uint8_t fb_count);
+  void set_frame_buffer_dram(bool frame_buffer_dram);
 
   /* public API (derivated) */
   void setup() override;
